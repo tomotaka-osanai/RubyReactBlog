@@ -17,12 +17,17 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
+  username: postgres
+  password: password
+  host: db
+  port: 5432
+  # The maximum number of connections in the connection pool.
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
 
 development:
   <<: *default
-  database: ruby_react_blog_development
+  # TODO:db未作成
+  #database: ruby_react_blog_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
