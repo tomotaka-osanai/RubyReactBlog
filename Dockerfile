@@ -33,6 +33,10 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# Install Node.js and npm
+RUN apt-get update && apt-get install -y nodejs npm && \
+npm install --global esbuild
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \

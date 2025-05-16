@@ -64,3 +64,5 @@ end
 
 # react-rails
 gem 'react-rails'
+
+gem "jsbundling-rails", "~> 1.3"
