@@ -33,18 +33,20 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install Node.js and npm
-RUN apt-get update && apt-get install -y nodejs npm && \
-npm install --global esbuild
-
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
+# 先にpackage.jsonとpackage-lock.jsonをコピー
+COPY package.json package-lock.json ./
+
+# Install Node.js and npm
+RUN apt-get update && apt-get install -y nodejs npm && npm install
+
 # Copy application code
-COPY . .
+COPY . ./
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
