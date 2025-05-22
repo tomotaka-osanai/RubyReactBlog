@@ -1,9 +1,8 @@
 // src/Routes.tsx
 import { Routes, Route } from "react-router-dom";
-import { Index } from "./pages/index";
-import { List } from "./pages/list";
-import { DetailWrapper } from "./route-wrappers/detail-wrapper";
-import { items } from "./tests/datas/articles"; // 仮のデータをインポート
+import { Index } from "./components/index";
+import { ListWrapper } from "./components/route-wrappers/list-wrapper";
+import { DetailWrapper } from "./components/route-wrappers/detail-wrapper";
 
 /**
  * アプリ全体のルーティングを定義するコンポーネント
@@ -13,7 +12,7 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
-      <Route path="/list" element={<List items={items} />} />
+      <Route path="/list" element={<ListWrapper />} />
       <Route path="/detail/:id" element={<DetailWrapper />} />
     </Routes>
   );

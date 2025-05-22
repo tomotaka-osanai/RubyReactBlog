@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { Detail } from "../pages/detail";
-import { items } from "../tests/datas/articles";
+import { Detail } from "../detail";
+import { items } from "../../tests/datas/articles";
 
 /**
  * Detailページ用のラッパー

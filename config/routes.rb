@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root 'home#index'
   get '*path', to: 'home#index', constraints: ->(req) { !req.xhr? && req.format.html? }
+  namespace :api do
+    resources :articles, only: [:index]
+  end
 end

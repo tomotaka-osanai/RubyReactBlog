@@ -1,21 +1,26 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { AppRoutes } from "./Routes"; // ルーティング用コンポーネントをインポート
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AppRoutes } from "./Routes";
 
 /**
  * アプリケーションのエントリーポイント
  * DOMContentLoaded時にReactアプリをマウントする
  */
 document.addEventListener("DOMContentLoaded", () => {
-  const rootElement = document.getElementById("root"); // HTMLのマウントポイントを取得
+  const rootElement = document.getElementById("root");
   if (rootElement) {
-    const root = ReactDOM.createRoot(rootElement); // createRoot を使用
+    const root = ReactDOM.createRoot(rootElement);
+    // QueryClientインスタンスを作成
+    const queryClient = new QueryClient();
     root.render(
       <React.StrictMode>
         <BrowserRouter>
-          <AppRoutes />
+          {/* QueryClientProviderでアプリ全体をラップ */}
+          <QueryClientProvider client={queryClient}>
+            <AppRoutes />
+          </QueryClientProvider>
         </BrowserRouter>
       </React.StrictMode>
     );
