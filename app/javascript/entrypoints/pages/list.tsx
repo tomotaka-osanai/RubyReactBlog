@@ -1,12 +1,13 @@
 import { useNavigateTo } from "../hooks/use-navigate/use-navigate-to";
+import type { ListProps } from "../types/props/list-props";
 
 /**
  * 一覧ページコンポーネント
- * @param {Object} props
- * @param {Array} props.items - 記事データ
- * @param {Function} props.onNavigate - ページ遷移用コールバック
+ *
+ * @param {ListProps} items - 記事データの配列
+ * @returns JSX.Element 一覧ページのJSX
  */
-export const List = ({ items }) => {
+export const List = ({ items }: ListProps) => {
   const navigateTo = useNavigateTo();
   return (
     <main className="p-8">
@@ -20,7 +21,7 @@ export const List = ({ items }) => {
             <span>{item.title}</span>
             <button
               className="text-blue-500 underline"
-              onClick={() => navigateTo("detail", item)}
+              onClick={() => navigateTo(`detail/${item.id}`)}
             >
               詳細
             </button>

@@ -45,6 +45,9 @@ COPY package.json package-lock.json ./
 # Install Node.js and npm
 RUN apt-get update && apt-get install -y nodejs npm && npm install
 
+# フロントエンドの本番ビルド
+# RUN npm run build
+
 # Copy application code
 COPY . ./
 

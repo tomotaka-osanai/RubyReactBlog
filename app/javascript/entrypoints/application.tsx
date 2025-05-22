@@ -1,10 +1,13 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./Routes"; // ルーティング用コンポーネントをインポート
 
-// React をマウント
+/**
+ * アプリケーションのエントリーポイント
+ * DOMContentLoaded時にReactアプリをマウントする
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const rootElement = document.getElementById("root"); // HTMLのマウントポイントを取得
   if (rootElement) {
@@ -18,9 +21,3 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 });
-
-// --- HMR対応ここから ---
-if (import.meta.hot) {
-  import.meta.hot.accept();
-}
-// --- HMR対応ここまで ---

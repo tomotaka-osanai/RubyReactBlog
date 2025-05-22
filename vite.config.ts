@@ -17,22 +17,6 @@ export default defineConfig({
   },
   plugins: [react(), RubyPlugin()],
   build: {
-    rollupOptions: {
-      // Customize the Rollup build process
-      input: {
-        // Specify the entry points for your application
-        application: resolve(
-          __dirname,
-          "app/javascript/entrypoints/application.jsx"
-        ),
-      },
-      external: [
-        "@hotwired/turbo-rails",
-        "@hotwired/stimulus",
-        "@hotwired/stimulus-loading",
-        "controllers",
-      ],
-    },
     outDir: "app/assets/builds",
     emptyOutDir: true,
   },

@@ -1,15 +1,16 @@
-import { useLocation } from "react-router-dom";
-import { useNavigateTo } from "../hooks/use-navigate/use-navigate-to.jsx";
+import { useNavigateTo } from "../hooks/use-navigate/use-navigate-to";
+import type { DetailProps } from "../types/props/detail-props";
 
 /**
  * 詳細ページコンポーネント
- * @param {Object} props
- * @param {Object} props.item - 記事データ
- * @param {Function} props.onNavigate - ページ遷移用コールバック
+ * 記事データをstate経由で受け取り、詳細を表示する
+ * @params {DetailProps} item - 記事データ
+ * @returns JSX.Element
  */
-export const Detail = () => {
-  const { state: item } = useLocation();
+export const Detail = ({ item }: DetailProps) => {
+  // データがなければ早期リターン
   if (!item) return <div>記事データがありません</div>;
+
   const navigateTo = useNavigateTo();
   return (
     <main className="p-8">

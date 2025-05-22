@@ -2,10 +2,11 @@ import { useNavigateTo } from "../hooks/use-navigate/use-navigate-to";
 
 /**
  * TOPページコンポーネント
- * @param {Object} props
- * @param {Function} props.onNavigate - ページ遷移用コールバック
+ * React×Railsサンプルサイトのトップ画面を表示する
+ * @returns JSX.Element トップページのJSX
  */
 export const Index = () => {
+  // ページ遷移用のカスタムフックを呼び出し
   const navigateTo = useNavigateTo();
   return (
     <main className="p-8 text-center">
