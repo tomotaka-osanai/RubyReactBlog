@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   root 'home#index'
   get '*path', to: 'home#index', constraints: ->(req) { !req.xhr? && req.format.html? }
   namespace :api do
-    resources :articles, only: [:index]
+    resources :articles, only: [:index, :show]
   end
 end

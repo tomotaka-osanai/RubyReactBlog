@@ -18,5 +18,17 @@ module Api
 
       render json: articles
     end
+
+    # GET /api/articles/:id
+    # 指定IDの記事1件だけ返すAPI
+    def show
+      article = Article.includes(:contents).find(params[:id])
+      render json: {
+        article: article,
+        contents: article.contents
+      }
+    rescue ActiveRecord::RecordNotFound
+      render json: { error: "記事が見つかりませんでした" }, status: :not_found
+    end
   end
 end

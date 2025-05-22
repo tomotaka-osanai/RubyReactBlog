@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { dataArticles } from "../../../data/articles";
+import { dataArticles } from "../../../data/articles/fetch-all";
 import type { Article } from "../../../types/entities/article";
 
 /**

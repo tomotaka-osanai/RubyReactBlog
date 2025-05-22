@@ -4,20 +4,38 @@ import type { DetailProps } from "../types/props/detail-props";
 /**
  * 詳細ページコンポーネント
  * 記事データをstate経由で受け取り、詳細を表示する
- * @params {DetailProps} item - 記事データ
+ * @params {DetailProps} items - 記事データ
  * @returns JSX.Element
  */
-export const Detail = ({ item }: DetailProps) => {
+export const Detail = ({ items }: DetailProps) => {
+  const article = items.article;
+  const contents = items.contents;
   // データがなければ早期リターン
-  if (!item) return <div>記事データがありません</div>;
-
+  if (!article && !contents) return <div>データがありません</div>;
+  if (!article) return <div>記事データがありません</div>;
   const navigateTo = useNavigateTo();
+
   return (
     <main className="p-8">
-      <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
-      <p className="mb-4">{item.body}</p>
+      <h2 className="text-2xl font-bold mb-2">{article.title}</h2>
+      <p className="mb-4">{article.body}</p>
+      {/* ここでcontentsをループ表示 */}
+      <section>
+        <ul>
+          {contents && contents.length > 0 ? (
+            contents.map((content) => (
+              <li key={content.id} className="mb-4 p-4 border rounded">
+                <h4 className="font-bold">{content.title}</h4>
+                <p>{content.body}</p>
+              </li>
+            ))
+          ) : (
+            <li>コンテンツがありません</li>
+          )}
+        </ul>
+      </section>
       <button
-        className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+        className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 mt-4"
         onClick={() => navigateTo("list")}
       >
         一覧へ戻る
