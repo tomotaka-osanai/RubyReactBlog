@@ -23,7 +23,9 @@ RUN apt-get update -qq && \
 ENV RAILS_ENV="development" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    PATH="/usr/local/bundle/bin:${PATH}" \
+    PATH="/rails/bin:${PATH}"
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build

@@ -26,6 +26,7 @@ default: &default
 
 development:
   <<: *default
+  database: myapp_development
   # TODO:db未作成
   #database: ruby_react_blog_development
 
