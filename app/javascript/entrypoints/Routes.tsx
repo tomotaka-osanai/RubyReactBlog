@@ -1,6 +1,6 @@
 // src/Routes.tsx
 import { Routes, Route } from "react-router-dom";
-import { Index } from "./components/index";
+import { IndexWrapper } from "./components/route-wrappers/index-wrapper";
 import { ListWrapper } from "./components/route-wrappers/list-wrapper";
 import { DetailWrapper } from "./components/route-wrappers/detail-wrapper";
 
@@ -11,7 +11,7 @@ import { DetailWrapper } from "./components/route-wrappers/detail-wrapper";
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Index />} />
+      <Route path="/" element={<IndexWrapper />} />
       <Route path="/list" element={<ListWrapper />} />
       <Route path="/detail/:id" element={<DetailWrapper />} />
     </Routes>

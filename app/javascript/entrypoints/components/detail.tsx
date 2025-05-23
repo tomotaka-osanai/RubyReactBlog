@@ -16,7 +16,7 @@ export const Detail = ({ items }: DetailProps) => {
   const navigateTo = useNavigateTo();
 
   return (
-    <main className="p-8">
+    <main className="p-0 max-w-[780px] mx-auto text-center">
       <h2 className="text-2xl font-bold mb-2">{article.title}</h2>
       <p className="mb-4">{article.body}</p>
       {/* ここでcontentsをループ表示 */}
@@ -34,12 +34,6 @@ export const Detail = ({ items }: DetailProps) => {
           )}
         </ul>
       </section>
-      <button
-        className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400 mt-4"
-        onClick={() => navigateTo("list")}
-      >
-        一覧へ戻る
-      </button>
     </main>
   );
 };

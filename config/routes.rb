@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root 'home#index'
+  root 'home#index', defaults: { format: :html }
   get '*path', to: 'home#index', constraints: ->(req) { !req.xhr? && req.format.html? }
   namespace :api do
     resources :articles, only: [:index, :show]

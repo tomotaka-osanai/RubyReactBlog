@@ -10,7 +10,7 @@ import type { ListProps } from "../types/props/list-props";
 export const List = ({ items }: ListProps) => {
   const navigateTo = useNavigateTo();
   return (
-    <main className="p-8">
+    <main className="p-0 max-w-[780px] mx-auto text-center">
       <h2 className="text-2xl font-bold mb-4">記事一覧</h2>
       <ul className="space-y-2">
         {items.map((item) => (
@@ -28,12 +28,6 @@ export const List = ({ items }: ListProps) => {
           </li>
         ))}
       </ul>
-      <button
-        className="mt-6 bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
-        onClick={() => navigateTo("")}
-      >
-        TOPへ戻る
-      </button>
     </main>
   );
 };
