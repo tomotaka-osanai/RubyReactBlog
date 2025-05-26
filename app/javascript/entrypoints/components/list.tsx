@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import type { ListProps } from "../types/props/list-props";
 import { Pager } from "./parts/pager/pager";
 import { SearchForm } from "./form/search-form";
+import { Breadcrumb } from "./parts/breadcrumb/breadcrumb";
 /**
  * 一覧ページコンポーネント
  * @param {ListProps} items - 記事データの配列
@@ -18,6 +19,11 @@ export const List = ({ items }: ListProps) => {
 
   return (
     <main className="p-0 max-w-[780px] mx-auto text-center">
+      {/* パンくずリスト */}
+      <Breadcrumb
+        items={[{ label: "⌂HOME", href: "/" }, { label: "記事一覧" }]}
+      />
+
       <h2 className="text-2xl font-bold mb-4">記事一覧</h2>
       {/* 検索フォーム */}
       <SearchForm onSearch={handleSearch} />

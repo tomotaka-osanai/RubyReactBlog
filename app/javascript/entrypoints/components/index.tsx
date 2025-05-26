@@ -16,7 +16,7 @@ export const Index = ({ items }: IndexProps) => {
   const navigateTo = useNavigateTo();
 
   return (
-    <main className="p-0 max-w-[780px] mx-auto text-center">
+    <main className="mt-4 p-0 max-w-[780px] mx-auto text-center">
       {/* AIチャットウィジェット */}
       {/* <AiChatWidget /> */}
 
