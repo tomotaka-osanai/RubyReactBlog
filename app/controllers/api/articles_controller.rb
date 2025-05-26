@@ -7,16 +7,19 @@ module Api
       per_page = 10
 
       # キーワードがあればタイトルで部分一致検索
-      articles = if params[:keyword].present?
+      articles_scope = if params[:keyword].present?
         Article.where('title LIKE ?', "%#{params[:keyword]}%")
       else
         Article.all
       end
 
-      # ページネーション
-      articles = articles.offset((page - 1) * per_page).limit(per_page)
+      # 記事総数を取得
+      total_count = articles_scope.count
 
-      render json: articles
+      # ページネーション
+      articles = articles_scope.offset((page - 1) * per_page).limit(per_page)
+
+      render json: { articles: articles, totalCount: total_count }
     end
 
     # GET /api/articles/:id

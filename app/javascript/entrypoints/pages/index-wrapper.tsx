@@ -1,5 +1,5 @@
-import { useArticlesPage } from "../../hooks/data/use-articles/use-articles-page";
-import { Index } from "../index";
+import { useArticlesPage } from "../hooks/data/use-articles/use-articles-page";
+import { Index } from "../components/index";
 
 /**
  * index-wrapper

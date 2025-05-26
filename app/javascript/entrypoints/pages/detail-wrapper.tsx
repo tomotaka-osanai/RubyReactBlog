@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useArticleDetail } from "../../hooks/data/use-articles/use-article-detail";
-import { Detail } from "../detail";
+import { useArticleDetail } from "../hooks/data/use-articles/use-article-detail";
+import { Detail } from "../components/detail";
 
 /**
  * Detailページ用のラッパー

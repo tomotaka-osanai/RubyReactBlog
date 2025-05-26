@@ -1,4 +1,4 @@
-import { useNavigateTo } from "../hooks/library/use-navigate/use-navigate-to";
+import { useNavigateTo } from "../hooks/ui/use-navigate/use-navigate-to";
 import type { DetailProps } from "../types/props/detail-props";
 
 /**

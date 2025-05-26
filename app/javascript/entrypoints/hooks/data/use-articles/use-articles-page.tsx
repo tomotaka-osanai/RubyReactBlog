@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { dataArticles } from "../../../data/articles/fetch-all";
-import type { Article } from "../../../types/entities/article";
 
 /**
  * useArticlesPage
- * 指定したページ番号で記事一覧を取得するカスタムフックだよ！
- * @param params.page 1始まりのページ番号（未指定や不正値は1ページ目になる）
- * @param params.keyword タイトルに含めたいキーワード（省略可）
- * @returns 記事配列・ローディング状態・エラー状態・エラー内容
+ * 指定したページ番号で記事一覧と総件数を取得するカスタムフックだよ！
+ * @param number page=1 - 1始まりのページ番号（未指定や不正値は1ページ目になる）
+ * @param string keyword="" - タイトルに含めたいキーワード（省略可）
+ * @returns  articles: Article[], totalCount: number, isLoading: boolean, isError: boolean, error: unknown
  */
 export const useArticlesPage = ({
   page = 1,
@@ -21,15 +20,21 @@ export const useArticlesPage = ({
 
   // TanStack QueryでAPIからデータ取得
   const {
-    data: articles = [],
+    data = { articles: [], totalCount: 0 },
     isLoading,
     isError,
     error,
-  } = useQuery<Article[]>({
+  } = useQuery({
     queryKey: ["articles", { page: validPage, keyword }],
     queryFn: () => dataArticles({ page: validPage, keyword }),
   });
 
   // 結果をオブジェクトで返す（ROROパターン）
-  return { articles, isLoading, isError, error };
+  return {
+    articles: data.articles,
+    totalCount: data.totalCount,
+    isLoading,
+    isError,
+    error,
+  };
 };

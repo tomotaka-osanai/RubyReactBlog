@@ -1,4 +1,4 @@
-import type { Article } from "../../types/entities/article";
+import type { Article } from "../../../types/entities/article";
 
 /**
  * 人気記事カード

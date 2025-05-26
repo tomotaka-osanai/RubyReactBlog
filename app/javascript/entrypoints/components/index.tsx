@@ -1,7 +1,8 @@
-import { useNavigateTo } from "../hooks/library/use-navigate/use-navigate-to";
+import { useNavigateTo } from "../hooks/ui/use-navigate/use-navigate-to";
 import { IndexProps } from "../types/props/index-props";
-import { LatestArticleCard } from "./cards/latest-article-card";
-import { PopularArticlesSwiper } from "./swiper/popular-article-swiper";
+import { LatestArticleCard } from "./parts/cards/latest-article-card";
+import { PopularArticlesSwiper } from "./parts/swiper/popular-article-swiper";
+import { AiChatWidget } from "./widget/ai-chat-widget";
 
 /**
  * Indexコンポーネント
@@ -15,6 +16,9 @@ export const Index = ({ items }: IndexProps) => {
 
   return (
     <main className="p-0 max-w-[780px] mx-auto text-center">
+      {/* AIチャットウィジェット */}
+      {/* <AiChatWidget /> */}
+
       {/* 新着記事 */}
       {!latestArticle && <div>新着記事がありません</div>}
       {latestArticle.isLoading && <div>新着記事を読み込み中…</div>}
