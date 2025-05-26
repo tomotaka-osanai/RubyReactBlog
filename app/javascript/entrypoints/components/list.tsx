@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { ListProps } from "../types/props/list-props";
 import { Pager } from "./parts/pager/pager";
+import { SearchForm } from "./form/search-form";
 /**
  * 一覧ページコンポーネント
  * @param {ListProps} items - 記事データの配列
@@ -13,10 +14,13 @@ export const List = ({ items }: ListProps) => {
     totalPages,
     onPageChange: setCurrentPage,
   } = items.pagerItems;
+  const handleSearch = items.handleSearch;
 
   return (
     <main className="p-0 max-w-[780px] mx-auto text-center">
       <h2 className="text-2xl font-bold mb-4">記事一覧</h2>
+      {/* 検索フォーム */}
+      <SearchForm onSearch={handleSearch} />
       <ul className="space-y-2">
         {articles.map((article) => (
           <li key={article.id}>

@@ -12,6 +12,7 @@ import { List } from "../components/list";
 export const ListWrapper = () => {
   // 現在のページ番号を管理
   const [currentPage, setCurrentPage] = useState(1);
+  const [keyword, setKeyword] = useState("");
 
   // URLのクエリパラメータからpageを取得（なければ1ページ目）
   const [searchParams] = useSearchParams();
@@ -21,6 +22,7 @@ export const ListWrapper = () => {
   // 記事データを取得（useArticlesPageを利用）
   const { articles, totalCount, isLoading, isError, error } = useArticlesPage({
     page: currentPage,
+    keyword: keyword,
   });
 
   // ローディング・エラー表示
@@ -31,11 +33,25 @@ export const ListWrapper = () => {
   const itemsPerPage = 10;
   const totalPages = Math.ceil(totalCount / itemsPerPage);
 
+  // 検索実行時の処理
+  const handleSearch = (newKeyword: string) => {
+    setKeyword(newKeyword);
+    setCurrentPage(1); // 検索時は1ページ目に戻す
+  };
+
   const pagerItems = {
     currentPage: currentPage,
     totalPages: totalPages,
     onPageChange: setCurrentPage,
   };
   // 記事一覧を表示
-  return <List items={{ articles: articles, pagerItems: pagerItems }} />;
+  return (
+    <List
+      items={{
+        articles: articles,
+        pagerItems: pagerItems,
+        handleSearch: handleSearch,
+      }}
+    />
+  );
 };

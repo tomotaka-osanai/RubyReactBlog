@@ -8,6 +8,7 @@ import type { Article } from "../entities/article";
  * @property {number} items.pagerItems.currentPage - 現在のページ番号
  * @property {number} items.pagerItems.totalPages - 総ページ数
  * @property {function} items.pagerItems.onPageChange - ページ変更時のコールバック関数
+ * @property {function} [handleSearch] - 検索機能のコールバック関数
  */
 export type ListProps = {
   items: {
@@ -17,5 +18,6 @@ export type ListProps = {
       totalPages: number;
       onPageChange: (page: number) => void;
     };
+    handleSearch: (keyword: string) => void;
   };
 };
