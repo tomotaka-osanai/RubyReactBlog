@@ -1,10 +1,10 @@
-import { useNavigateTo } from "../hooks/ui/use-navigate/use-navigate-to";
-import { IndexProps } from "../types/props/index-props";
-import { LatestArticleCard } from "./parts/cards/latest-article-card";
-import { PopularArticlesSwiper } from "./parts/swiper/popular-article-swiper";
-import { CalendarWidget } from "./parts/widget/calendar-widget";
-import { AiChatWidget } from "./parts/widget/ai-chat-widget";
-import { Layout } from "./layout/layout";
+import { useNavigateTo } from "../../hooks/ui/use-navigate/use-navigate-to";
+import { IndexProps } from "../../types/props/index-props";
+import { LatestArticleCard } from "../parts/cards/latest-article-card";
+import { PopularArticlesSwiper } from "../parts/swiper/popular-article-swiper";
+import { CalendarWidget } from "../parts/widget/calendar-widget";
+import { AiChatWidget } from "../parts/widget/ai-chat-widget";
+import { Layout } from "../layout/layout";
 
 /**
  * Indexコンポーネント

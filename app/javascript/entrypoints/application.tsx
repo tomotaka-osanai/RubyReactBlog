@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ErrorBoundary } from "./components/layout/error-boudary";
 import { AppRoutes } from "./Routes";
 import "./styles/global.css";
 
@@ -18,10 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     root.render(
       <React.StrictMode>
         <BrowserRouter>
-          {/* QueryClientProviderでアプリ全体をラップ */}
-          <QueryClientProvider client={queryClient}>
-            <AppRoutes />
-          </QueryClientProvider>
+          <ErrorBoundary>
+            {/* QueryClientProviderでアプリ全体をラップ */}
+            <QueryClientProvider client={queryClient}>
+              <AppRoutes />
+            </QueryClientProvider>
+          </ErrorBoundary>
         </BrowserRouter>
       </React.StrictMode>
     );

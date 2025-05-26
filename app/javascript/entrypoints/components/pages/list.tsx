@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import type { ListProps } from "../types/props/list-props";
-import { Pager } from "./parts/pager/pager";
-import { SearchForm } from "./form/search-form";
-import { Breadcrumb } from "./parts/breadcrumb/breadcrumb";
-import { Layout } from "./layout/layout";
+import type { ListProps } from "../../types/props/list-props";
+import { Pager } from "../parts/pager/pager";
+import { SearchForm } from "../form/search-form";
+import { Breadcrumb } from "../parts/breadcrumb/breadcrumb";
+import { Layout } from "../layout/layout";
 /**
  * 一覧ページコンポーネント
  * @param {ListProps} items - 記事データの配列

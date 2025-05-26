@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { useArticlesPage } from "../hooks/data/use-articles/use-articles-page";
-import { List } from "../components/list";
+import { List } from "../components/pages/list";
 
 /**
  * ListWrapper
@@ -13,11 +12,6 @@ export const ListWrapper = () => {
   // 現在のページ番号を管理
   const [currentPage, setCurrentPage] = useState(1);
   const [keyword, setKeyword] = useState("");
-
-  // URLのクエリパラメータからpageを取得（なければ1ページ目）
-  const [searchParams] = useSearchParams();
-  const page =
-    Number(searchParams.get("page")) > 0 ? Number(searchParams.get("page")) : 1;
 
   // 記事データを取得（useArticlesPageを利用）
   const { articles, totalCount, isLoading, isError, error } = useArticlesPage({

@@ -1,6 +1,6 @@
-import type { DetailProps } from "../types/props/detail-props";
-import { Layout } from "./layout/layout";
-import { Breadcrumb } from "./parts/breadcrumb/breadcrumb";
+import type { DetailProps } from "../../types/props/detail-props";
+import { Layout } from "../layout/layout";
+import { Breadcrumb } from "../parts/breadcrumb/breadcrumb";
 
 /**
  * 詳細ページコンポーネント
