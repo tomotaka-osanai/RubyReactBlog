@@ -4,6 +4,7 @@ import { LatestArticleCard } from "./parts/cards/latest-article-card";
 import { PopularArticlesSwiper } from "./parts/swiper/popular-article-swiper";
 import { CalendarWidget } from "./parts/widget/calendar-widget";
 import { AiChatWidget } from "./parts/widget/ai-chat-widget";
+import { Layout } from "./layout/layout";
 
 /**
  * Indexコンポーネント
@@ -16,28 +17,30 @@ export const Index = ({ items }: IndexProps) => {
   const navigateTo = useNavigateTo();
 
   return (
-    <main className="mt-4 p-0 max-w-[780px] mx-auto text-center">
-      {/* AIチャットウィジェット */}
-      {/* <AiChatWidget /> */}
+    <Layout>
+      <main className="mt-4 p-0 max-w-[780px] mx-auto text-center">
+        {/* AIチャットウィジェット */}
+        {/* <AiChatWidget /> */}
 
-      {/* 新着記事 */}
-      {!latestArticle && <div>新着記事がありません</div>}
-      {latestArticle.isLoading && <div>新着記事を読み込み中…</div>}
-      {latestArticle.isError && <div>新着記事の取得に失敗しました</div>}
-      {latestArticle.article && (
-        <LatestArticleCard
-          article={latestArticle.article}
-          onClick={() => navigateTo(`detail/${latestArticle.article.id}`)}
-        />
-      )}
+        {/* 新着記事 */}
+        {!latestArticle && <div>新着記事がありません</div>}
+        {latestArticle.isLoading && <div>新着記事を読み込み中…</div>}
+        {latestArticle.isError && <div>新着記事の取得に失敗しました</div>}
+        {latestArticle.article && (
+          <LatestArticleCard
+            article={latestArticle.article}
+            onClick={() => navigateTo(`detail/${latestArticle.article.id}`)}
+          />
+        )}
 
-      {/* 人気記事Swiper */}
-      {popularArticles && popularArticles.length > 0 && (
-        <PopularArticlesSwiper articles={popularArticles} />
-      )}
+        {/* 人気記事Swiper */}
+        {popularArticles && popularArticles.length > 0 && (
+          <PopularArticlesSwiper articles={popularArticles} />
+        )}
 
-      {/* カレンダーウィジェット */}
-      <CalendarWidget />
-    </main>
+        {/* カレンダーウィジェット */}
+        <CalendarWidget />
+      </main>
+    </Layout>
   );
 };

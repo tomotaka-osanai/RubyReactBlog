@@ -4,8 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppRoutes } from "./Routes";
 import "./styles/global.css";
-import { SiteHeader } from "./components/layout/site-header";
-import { SiteFooter } from "./components/layout/site-footer";
 
 /**
  * アプリケーションのエントリーポイント
@@ -22,9 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <BrowserRouter>
           {/* QueryClientProviderでアプリ全体をラップ */}
           <QueryClientProvider client={queryClient}>
-            <SiteHeader />
             <AppRoutes />
-            <SiteFooter />
           </QueryClientProvider>
         </BrowserRouter>
       </React.StrictMode>

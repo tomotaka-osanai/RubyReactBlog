@@ -44,7 +44,6 @@ export const CalendarWidget = () => {
 
   return (
     <section className="mt-8">
-      <h3 className="text-xl font-bold mb-4">カレンダー</h3>
       <div className="w-full max-w-[780px] mx-auto p-4 bg-white shadow-md rounded-lg">
         {/* レスポンシブflexレイアウト */}
         <div className="flex flex-col md:flex-row gap-4 items-stretch">
