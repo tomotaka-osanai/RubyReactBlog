@@ -13,7 +13,7 @@ export const SiteHeader = () => {
   const toggleMenu = () => setIsMenuOpen((open) => !open);
 
   return (
-    <header className="w-full bg-white shadow px-0 py-3 relative">
+    <header className="fixed md:static top-0 left-0 w-full bg-white shadow px-0 py-3 z-50">
       <div className="max-w-[780px] mx-auto w-full flex items-center justify-between px-6">
         {/* サイト名ロゴ */}
         <Link

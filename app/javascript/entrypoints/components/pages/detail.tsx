@@ -17,7 +17,7 @@ export const Detail = ({ items }: DetailProps) => {
 
   return (
     <Layout>
-      <main className="p-0 max-w-[780px] mx-auto text-center">
+      <main className="pt-16 md:pt-0 p-0 max-w-[780px] mx-auto text-center">
         {/* パンくずリスト */}
         <Breadcrumb
           items={[

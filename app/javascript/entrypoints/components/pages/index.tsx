@@ -18,7 +18,7 @@ export const Index = ({ items }: IndexProps) => {
 
   return (
     <Layout>
-      <main className="mt-4 p-0 max-w-[780px] mx-auto text-center">
+      <main className="pt-16 md:pt-0 mt-4 p-0 max-w-[780px] mx-auto text-center">
         {/* AIチャットウィジェット */}
         {/* <AiChatWidget /> */}
 
