@@ -1,6 +1,10 @@
-# 実行前にシーケンスをリセット
-ActiveRecord::Base.connection.reset_pk_sequence!('articles')
-# 1articlesテーブルにデータをINSERT
+# データがあればTRUNCATEで全削除＆IDリセット
+if Article.exists?
+  # TRUNCATEでテーブルを空にしてIDもリセット
+  ActiveRecord::Base.connection.execute("TRUNCATE TABLE articles RESTART IDENTITY CASCADE")
+end
+
+# articlesテーブルにデータをINSERT
 Article.create!(
   [
     { id: 1, title: "「家庭でできる簡単なDIYプロジェクト」", body: "「家庭でできる簡単なDIYプロジェクト」は、家の中で過ごす時間が増えた現在の状況において注目を集めています。簡単に作れるプロジェクトであれば、DIY初心者でもチャレンジしやすく、自分で作ったものに喜びを感じることができます。例えば、ペイントして飾り付けた手作りのフラワーポットや、カスタマイズしたシェルフなどがおすすめです。DIYは手軽に始めることができ、自分で作ったものに愛着を持つことができますので、ぜひ取り組んでみてください。" },

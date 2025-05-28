@@ -1,3 +1,9 @@
+# データがあればTRUNCATEで全削除＆IDリセット
+if Content.exists?
+  # TRUNCATEでテーブルを空にしてIDもリセット
+  ActiveRecord::Base.connection.execute("TRUNCATE TABLE contents RESTART IDENTITY CASCADE")
+end
+
 # 記事ごとに紐づけるコンテンツデータをハッシュで定義
 contentsData = {
   1 => [
