@@ -16,7 +16,7 @@ services:
   vite:
     build:
       target: build
-    command: bin/vite build
+    command: bin/vite build --mode production
     depends_on:
       - web
   db:

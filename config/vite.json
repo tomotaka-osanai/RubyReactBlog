@@ -1,10 +1,9 @@
 {
   "all": {
-    "sourceCodeDir": "app/javascript/entrypoints",
+    "sourceCodeDir": "app/javascript",
     "watchAdditionalPaths": []
   },
   "development": {
-    "sourceCodeDir": "app/javascript",
     "autoBuild": true,
     "publicOutputDir": "vite-dev",
     "port": 3036,
