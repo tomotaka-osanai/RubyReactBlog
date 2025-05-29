@@ -16,9 +16,7 @@ services:
   vite:
     build:
       target: build
-    command: bin/vite dev
-    ports:
-      - "3036:3036"
+    command: bin/vite build
     depends_on:
       - web
   db:

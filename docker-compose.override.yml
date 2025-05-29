@@ -17,21 +17,14 @@ services:
     depends_on:
       - db
 
-  # vite:
-  #   build:
-  #     target: build
-  #   command: npm run dev -- --host
-  #   working_dir: /rails
-  #   ports:
-  #     - "3036:3036"
-  #   # volumeが上書きされて挙動がおかしいのでコメントアウト
-  #   # volumes:
-  #   #   - ".:/RubyReactBlog"
-  #   #   - node_modules:/RubyReactBlog/node_modules
-  #   environment:
-  #     NODE_ENV: development
-  #   depends_on:
-  #     - web
+  vite:
+    build:
+      target: build
+    command: bin/vite dev
+    ports:
+      - "3036:3036"
+    depends_on:
+      - web
 
 volumes:
   node_modules:
