@@ -1,11 +1,14 @@
 version: "3.9"
 services:
   web:
-    build: .
+    build:
+      target: build
+    command: bundle exec rails server -b 0.0.0.0
+    environment:
+      RAILS_ENV: development
+      NODE_ENV: development
     ports:
       - "3000:3000"
-    volumes:
-      - ".:/RubyReactBlog"
     depends_on:
       - db
   db:
@@ -20,3 +23,4 @@ services:
       - db-data:/var/lib/postgresql/data
 volumes:
   db-data:
+  node_modules:
