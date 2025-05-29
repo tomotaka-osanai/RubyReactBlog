@@ -11,9 +11,16 @@ services:
       SECRET_KEY_BASE: fa5eda2f0bf5dc5807ec7c7f772e7f4f00334c79c59d8f0952fcea41c1bddda1bc09760625cfc050f45456343a9eca037a849d0532a00f776a036f3de3422122
     ports:
       - "3000:3000"
-      - "3036:3036"
     depends_on:
       - db
+  vite:
+    build:
+      target: build
+    command: bin/vite dev
+    ports:
+      - "3036:3036"
+    depends_on:
+      - web
   db:
     image: postgres:15
     environment:

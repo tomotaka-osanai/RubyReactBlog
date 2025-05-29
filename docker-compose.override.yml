@@ -14,7 +14,6 @@ services:
     #   - node_modules:/RubyReactBlog/node_modules
     ports:
       - "3000:3000"
-      - "3036:3036"
     depends_on:
       - db
 
