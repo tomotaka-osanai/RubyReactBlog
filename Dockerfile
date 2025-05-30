@@ -59,9 +59,9 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 RUN bin/vite build
 
 # ENTRYPOINTは絶対パスで指定
-COPY entrypoint.sh /rails/entrypoint.sh
-RUN chmod +x /rails/entrypoint.sh
-ENTRYPOINT ["/rails/entrypoint.sh"]
+# COPY entrypoint.sh /rails/entrypoint.sh
+# RUN chmod +x /rails/entrypoint.sh
+# ENTRYPOINT ["/rails/entrypoint.sh"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 3000
