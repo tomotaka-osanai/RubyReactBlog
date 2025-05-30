@@ -87,9 +87,10 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: ruby_react_blog_production
-    username: ruby_react_blog
-    password: <%= ENV["RUBY_REACT_BLOG_DATABASE_PASSWORD"] %>
+    database: myapp_development
+    # database: ruby_react_blog_production
+    # username: ruby_react_blog
+    # password: <%= ENV["RUBY_REACT_BLOG_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: ruby_react_blog_production_cache
