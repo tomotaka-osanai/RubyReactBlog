@@ -46,9 +46,6 @@ COPY package.json package-lock.json ./
 # Install Node.js and npm
 RUN apt-get update && apt-get install -y nodejs npm && npm install
 
-# フロントエンドの本番ビルド
-# RUN npm run build
-
 # Copy application code
 COPY . ./
 
@@ -58,27 +55,16 @@ RUN bundle exec bootsnap precompile app/ lib/
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
+# フロントエンドの本番ビルド
+RUN bin/vite build
 
-
-
-# Final stage for app image
-FROM base
-
-# Copy built artifacts: gems, application
-COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
-COPY --from=build /rails /rails
-
-# Run and own only the runtime files as a non-root user for security
-RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
-USER 1000:1000
-
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+# ENTRYPOINTは絶対パスで指定
+COPY entrypoint.sh /rails/entrypoint.sh
+RUN chmod +x /rails/entrypoint.sh
+ENTRYPOINT ["/rails/entrypoint.sh"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 3000
-#CMD ["./bin/thrust", "./bin/rails", "server"]
+
 # docker
 CMD ["./bin/thrust", "./bin/rails", "server", "-b", "0.0.0.0"]

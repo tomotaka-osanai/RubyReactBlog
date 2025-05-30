@@ -5,20 +5,14 @@ services:
       target: build
     command: bundle exec rails server -b 0.0.0.0
     environment:
-      RAILS_ENV: development
-      NODE_ENV: development
+      RAILS_ENV: prudoction
+      NODE_ENV: production
       VITE_RUBY_HOST: "0.0.0.0"
       SECRET_KEY_BASE: fa5eda2f0bf5dc5807ec7c7f772e7f4f00334c79c59d8f0952fcea41c1bddda1bc09760625cfc050f45456343a9eca037a849d0532a00f776a036f3de3422122
     ports:
       - "3000:3000"
     depends_on:
       - db
-  vite:
-    build:
-      target: build
-    command: bin/vite build --mode=production
-    depends_on:
-      - web
   db:
     image: postgres:15
     environment:
